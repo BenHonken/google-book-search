@@ -9,7 +9,7 @@ function BookCard(props) {
   // Load all books and store them with setBooks
   useEffect(() => {
     loadBooks();
-  }, [])
+  })
 
   // Loads all books and sets them to books
   function loadBooks() {
@@ -59,7 +59,7 @@ function BookCard(props) {
               </div>
               <div className="row">
                 <div className="col-md-2">
-                  <img src={result.volumeInfo.imageLinks.smallThumbnail} alt={result.volumeInfo.title} style={{float: "left"}}/>
+                  <img src={result.volumeInfo.imageLinks.thumbnail} alt={result.volumeInfo.title} style={{float: "left"}}/>
                 </div>
                 <div className="col-md-10">
                   {result.volumeInfo.description}
