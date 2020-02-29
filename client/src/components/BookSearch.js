@@ -61,7 +61,7 @@ class BookSearch extends Component {
         <Row>
           <Col size="md-12">
             <hr />
-            <BookCard search={this.state.search} sortType={parseInt(this.state.sortType)} sortKey={this.state.sortKey} searchResults={this.state.result}/>
+            <BookCard search={this.state.search} sortType={parseInt(this.state.sortType)} sortKey={this.state.sortKey} searchResults={this.state.result.items}/>
           </Col>
         </Row>
       </Container >

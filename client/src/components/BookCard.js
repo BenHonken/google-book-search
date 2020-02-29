@@ -1,8 +1,24 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import SaveBtn from "./SaveBtn";
 import ViewBtn from "./ViewBtn"
 import API from "../utils/API"
 function BookCard(props) {
+  // Setting our component's initial state
+  const [books, setBooks] = useState([])
+
+  // Load all books and store them with setBooks
+  useEffect(() => {
+    loadBooks();
+  }, [])
+
+  // Loads all books and sets them to books
+  function loadBooks() {
+    API.searchBook(props.search)
+      .then(res => 
+        setBooks(res.data.items)
+      )
+      .catch(err => console.log(err));
+  };
   function handleSave(volumeInfo) {
       API.saveBook({
         title: volumeInfo.title,
@@ -15,9 +31,7 @@ function BookCard(props) {
         .catch(err => console.log(err));
   };
   
-  console.log(props)
-  let Booklist = props.searchResults;
-  console.log(Booklist.items)
+  console.log(books)
 
   // const results = BookList.filter(book => Book.title.toLowerCase().includes(props.search.toLowerCase()) || Book.Authors.toLowerCase().includes(props.search.toLowerCase()));
   // const sort = function(props, results){
@@ -27,10 +41,11 @@ function BookCard(props) {
   // sort(props, results);
   return (
     <div className="text-center">
-      {Booklist.length > 0 ? (
+
+      { books.length > 0 ? (
         <ul className="list-group">
           <h2>Books</h2>
-          {Booklist.map(result => (
+          {books.map(result => (
             <li className="list-group-item" key={result.id}>
               <div className="row">
               <div className="col-md-10" style={{textAlign: "left"}}>
@@ -38,8 +53,8 @@ function BookCard(props) {
                   <p>{result.volumeInfo.authors[0]}</p>
                 </div>
                 <div className="col-md-2">
-                  <ViewBtn href={result.link}></ViewBtn>
-                  <SaveBtn onClick={handleSave(result.volumeInfo)}></SaveBtn>
+                  <ViewBtn href={result.volumeInfo.infoLink}></ViewBtn>
+                  <SaveBtn onClick={()=> {handleSave(result.volumeInfo)}}></SaveBtn>
                 </div>
               </div>
               <div className="row">
