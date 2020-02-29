@@ -50,7 +50,7 @@ function BookCard(props) {
               <div className="row">
               <div className="col-md-10" style={{textAlign: "left"}}>
                   <h4>{result.volumeInfo.title}</h4>
-                  <p>{result.volumeInfo.authors[0]}</p>
+                  <p>{result.volumeInfo.authors}</p>
                 </div>
                 <div className="col-md-2">
                   <ViewBtn href={result.volumeInfo.infoLink}></ViewBtn>
