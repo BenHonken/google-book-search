@@ -50,7 +50,7 @@ function BookCard(props) {
               <div className="row">
               <div className="col-md-10" style={{textAlign: "left"}}>
                   <h4>{result.volumeInfo.title}</h4>
-                  <p>{result.volumeInfo.authors || null}</p>
+                  <p>{result.volumeInfo.authors}</p>
                 </div>
                 <div className="col-md-2">
                   <ViewBtn href={result.volumeInfo.infoLink}></ViewBtn>
@@ -59,7 +59,7 @@ function BookCard(props) {
               </div>
               <div className="row">
                 <div className="col-md-2">
-                  <img src={result.volumeInfo.imageLinks.thumbnail || null} alt={result.volumeInfo.title} style={{float: "left"}}/>
+                  <img src={result.volumeInfo.imageLinks.smallThumbnail} alt={result.volumeInfo.title} style={{float: "left"}}/>
                 </div>
                 <div className="col-md-10">
                   {result.volumeInfo.description}
