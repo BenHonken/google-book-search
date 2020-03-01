@@ -4,7 +4,7 @@ import ViewBtn from "./ViewBtn"
 import API from "../utils/API"
 function BookCard(props) {
   // Setting our component's initial state
-  const [books, setBooks] = useState(loadBooks())
+  const [books, setBooks] = useState([])
 
   // Load all books and store them with setBooks
   useEffect(() => {
