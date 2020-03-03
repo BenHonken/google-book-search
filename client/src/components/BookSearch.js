@@ -14,7 +14,7 @@ class BookSearch extends Component {
     sortType: 1
   };
   componentDidMount() {
-    this.searchBooks();
+    //this.searchBooks();
   }
 
   searchBooks = async () => {
@@ -23,7 +23,7 @@ class BookSearch extends Component {
     .then(res => 
       searchResults=res.data
     )
-    this.setState({ 'result': searchResults });
+  //  this.setState({ 'result': searchResults });
   };
 
   handleInputChange = event => {
@@ -32,13 +32,13 @@ class BookSearch extends Component {
     this.setState({
       [name]: value
     });
-    this.searchBooks();
+    //this.searchBooks();
   };
 
   // When the form is submitted, search the OMDB API for the value of `this.state.search`
   handleFormSubmit = event => {
     event.preventDefault();
-    this.searchBooks();
+  //  this.searchBooks();
   };
 
   render() {
